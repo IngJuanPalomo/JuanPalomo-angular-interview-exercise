@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   paginatedStations: any[] = [];
   pageSize = 10;
   currentPage = 0;
+  title = 'ace-interview-exercise';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
