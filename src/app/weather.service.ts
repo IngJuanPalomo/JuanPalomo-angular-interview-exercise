@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
-  private stationsUrl = 'https://api.weather.gov/stations?limit=100';
-  private observationsUrl = 'https://api.weather.gov/stations/';
+  private stationsUrl = `${environment.apiUrl}?limit=100`;
+  private observationsUrl = `${environment.apiUrl}/`;
 
   constructor(private http: HttpClient) { }
 
