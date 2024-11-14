@@ -29,12 +29,11 @@ describe('WeatherService', () => {
     const city = 'London';
     const apiUrl = environment.apiUrl;
 
-    service.getTemperature(city).subscribe((data) => {
-      expect(data.weather[0].description).toBe('clear sky');
-      expect(data.main.temp).toBe(295.15);
+    service.getTemperature('London').subscribe(data => {
+      expect(data).toEqual(dummyWeatherData);
     });
 
-    const req = httpMock.expectOne(`${apiUrl}?q=${city}`);
+    const req = httpMock.expectOne(`${apiUrl}/${city}/observations?limit=1`);
     expect(req.request.method).toBe('GET');
     req.flush(dummyWeatherData);
 
